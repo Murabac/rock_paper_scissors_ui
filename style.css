@@ -44,6 +44,9 @@ body,html {
 .stars i{
   padding: 0 2px;
 }
+.stars #full,  .stars #full2{
+  color: #fff	;
+}
 #options div{
   display: inline-block;
   padding-top: 20px;
@@ -70,6 +73,37 @@ body,html {
 	position: relative;
 	/*margin:0 -4px -5px -2px;*/
 	transition: all .2s ease;
+}
+.reset{
+  position: absolute;
+  left: 45%;
+}
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+.action-button
+{
+	padding: 10px 40px;
+  float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;
+}
+.red
+{
+	background-color: #E74C3C;
+	border-bottom: 5px solid #BD3E31;
+	text-shadow: 0px -2px #BD3E31;
+}
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
 }
 /* -------------- loader2 -------------- */
 
@@ -121,7 +155,9 @@ body,html {
 			animation: loader2 1.5s linear infinite;
 }
 
-
+.hide{
+  display: none;
+}
 
 @-webkit-keyframes loader2{
     0%{-webkit-transform:rotate(0deg);}

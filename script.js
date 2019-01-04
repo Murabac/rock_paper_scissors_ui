@@ -1,6 +1,21 @@
+function computerPlay (){
+    let computerOptions = [
+    "Rock",
+    "Paper",
+    "Scissors"
+  ];
+  let computerSelection = computerOptions[Math.floor(Math.random()*computerOptions.length)];
+  return computerSelection;
+  }
+
+
+console.log(computerPlay());
+
 //Global Variables !!
 let playerOptions = document.querySelector("#options");
 let humanSelection = "";
+let humanRecord = null;
+let computerRecord = null;
 // function: humanPick to handle the user selection via Event listener
 playerOptions.addEventListener("click", humanPick, false);
 function humanPick(e){
@@ -45,29 +60,108 @@ function humanPick(e){
     }
 
   }
+  console.log(humanSelection);
+  function computerOptionsDisplay(){
+    let computerPick = computerPlay();
 
-  e.stopPropagation();
+    if(computerPick != ""){
+      let loader = document.getElementById('loader');
+      loader.parentNode.removeChild(loader);
+
+      let rock2 = document.getElementById('rock2');
+      let paper2 = document.getElementById('paper2');
+      let scissors2 = document.getElementById('scissors2');
+      let header = document.getElementById('header');
+      let empty = document.getElementById('empty');
+      let full = document.getElementById('full');
+      let empty2 = document.getElementById('empty2');
+      let full2 = document.getElementById('full2');
+
+      if(computerPick == "Paper"){
+        paper2.className = "";
+        if(humanSelection == "Paper"){
+          header.innerText = "The Game is: TIE!";
+          empty.className = "hide";
+          full.className = ""
+          empty2.className = "hide";
+          full2.className = ""
+
+
+        }
+        else if (humanSelection == "Rock")
+        {
+          header.innerText = "You Lose! Rock loses to Paper"
+          empty2.className = "hide";
+          full2.className = ""
+        }
+        else if(humanSelection == "Scissors")
+        {
+          header.innerText = "You Win! Scissors beats Paper";
+          empty.className = "hide";
+          full.className = ""
+        }
+      }
+      else if(computerPick == "Scissors"){
+        scissors2.className = "";
+        if(humanSelection == "Paper"){
+          header.innerText = "You Lose! Paper loses to Scissors";
+          empty2.className = "hide";
+          full2.className = ""
+        }
+        else if (humanSelection == "Rock")
+        {
+          header.innerText = "You Win! Rock beats Scissors"
+          empty.className = "hide";
+          full.className = ""
+        }
+        else if(humanSelection == "Scissors")
+        {
+          header.innerText = "The Game is: TIE!";
+          empty.className = "hide";
+          full.className = ""
+          empty2.className = "hide";
+          full2.className = ""
+        }
+      }
+      else if(computerPick == "Rock"){
+        rock2.className = "";
+        if(humanSelection == "Paper"){
+          header.innerText = "You Win! Paper beats Rock";
+          empty.className = "hide";
+          full.className = "";
+        }
+        else if (humanSelection == "Rock")
+        {
+          header.innerText = "The Game is: TIE!";
+          empty.className = "hide";
+          full.className = ""
+          empty2.className = "hide";
+          full2.className = ""
+        }
+        else if(humanSelection == "Scissors")
+        {
+          header.innerText = "You Lose! Scissors loses to Rock";
+          empty2.className = "hide";
+          full2.className = ""
+        }
+      }
+
+      switch (computerPick) {
+        case expression:
+
+          break;
+        default:
+
+      }
+
+    }
+  }
+  computerOptionsDisplay();
 
 }
 //End of the humanPick
-
-
-function computerPlay (){
-    let computerOptions = [
-    "Rock",
-    "Paper",
-    "Scissors"
-  ];
-  let computerSelection = computerOptions[Math.floor(Math.random()*computerOptions.length)];
-  return computerSelection;
-  }
-
-function computerOptionsDisplay(){
-  let computerPick = computerPlay();
-
-  if(computerPick == ""){
-    let loader = document.getElementById('loader');
-    loader.parentNode.removeChild(loader);
-  }
-}
-console.log(computerPlay());
+// a button to reset all scores
+const reset = document.querySelector('a.reset');
+reset.addEventListener('click', (e) => {
+		location.reload();
+	});

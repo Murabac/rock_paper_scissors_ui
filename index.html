@@ -12,45 +12,68 @@
 
 <div class="container">
 
-  <h1 class="header">ROUND 1</h1>
+  <h1 class="header" id="header">Rock Paper & Scissors</h1>
+  <a href="#" class=" reset action-button shadow animate red">Play again</a>
     <div class="content">
       <div class="col">
         <h2 class="scoreHeader">YOUR SCORE</h2>
         <span class="stars">
-          <i class="fal far fa-star fa-3x"></i>
+          <span id="empty">
+          <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
         </span>
+        <span id="full" class="hide">
+          <i class="fa fa-star fa-3x "></i>
+          <i class="fa fa-star fa-3x"></i>
+          <i class="fa fa-star fa-3x"></i>
+          <i class="fa fa-star fa-3x "></i>
+          <i class="fa fa-star fa-3x "></i>
+        </span>
+        </span>
         <div id="options">
           <div >
-            <img src="images/paper.png" id="paper">
+            <img src="images/paper.png" data-id="paper" id="paper"  class="img">
           </div>
           <div >
-            <img src="images/rock.png" id="rock">
+            <img src="images/rock.png" data-id="rock" id="rock" class="img">
           </div>
           <div >
-            <img src="images/scissors.png" id="scissors">
+            <img src="images/scissors.png" data-id="scissors" id="scissors" class="img">
           </div>
         </div>
-        <p class="info">Take your pick</p>
+        <p class="info" id="info2">Good Luck</p>
       </div>
       <div class="col">
         <h2 class="scoreHeader">COMPUTER SCORE</h2>
         <span class="stars">
+          <span id="empty2">
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
           <i class="far fa-star fa-3x"></i>
         </span>
+        <span id="full2" class="hide">
+          <i class="fa fa-star fa-3x "></i>
+          <i class="fa fa-star fa-3x"></i>
+          <i class="fa fa-star fa-3x"></i>
+          <i class="fa fa-star fa-3x "></i>
+          <i class="fa fa-star fa-3x "></i>
+        </span>
         <div class="loaderContainer">
           <div class="box">
 			      <div class="loader2" id="loader"></div>
+            <div id="options" class="hidden">
+                <img src="images/paper.png" data-id="paper" id="paper2"  class="hide">
+                <img src="images/rock.png" data-id="rock" id="rock2" class="hide">
+                <img src="images/scissors.png" data-id="scissors" id="scissors2" class="hide">
+            </div>
           </div>
         </div>
-        <p class="info" style="margin: 50px;">Computer is waiting</p>
+        <p class="info" style="margin: 50px;" id="info2">Computer is waiting</p>
       </div>
     </div>
 
