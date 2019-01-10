@@ -155,8 +155,9 @@ scissor.addEventListener('click', function(){
       loader.className = "";
       header.innerHTML = "Rock Paper & Scissors";
      console.log("Total" + total);
-    }else{
-      alert("Game is over");
+    }else if(total == 5){
+      console.log(total);
+      header.innerHTML = "Game is Over";
     }
  
   })
