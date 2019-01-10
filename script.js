@@ -1,167 +1,175 @@
-function computerPlay (){
-    let computerOptions = [
-    "Rock",
-    "Paper",
-    "Scissors"
-  ];
-  let computerSelection = computerOptions[Math.floor(Math.random()*computerOptions.length)];
-  return computerSelection;
+let again = document.getElementById('again');
+
+let paper = document.getElementById('paper');
+let rock = document.getElementById('rock');
+let scissor = document.getElementById('scissors');
+
+let paper2 = document.getElementById('paper2')
+let rock2 = document.getElementById('rock2');
+let scissor2 =  document.getElementById('scissors2');
+
+let header = document.getElementById('header');
+
+let loader = document.getElementById('loader');
+let playerScore = document.getElementsByClassName('score');
+let computerScore = document.getElementsByClassName('score2');
+
+
+var player;
+
+//this is variable diclaration for storing wins and draws
+cWin = 0;
+pWin = 0;
+draw = 0;
+total = 0;
+//Paper event hanlding
+paper.addEventListener('click', function(){
+  var player =  1;
+  var computer = Math.floor(Math.random() * 3 + 1);
+  rock.className = "hide";
+  scissor.className = "hide";
+
+  if (player === computer){
+    loader.className = "hide";
+    paper2.className = "";
+    
+    header.innerHTML = "Draw!!";
+    draw++;
+
+    console.log("draw = " + draw);
+  }else if (player == 1 && computer === 2){
+    loader.className = "hide";
+    rock2.className = "";
+    header.innerHTML = "You Win!";
+    pWin++;
+    console.log("player wins = " + pWin);
+    for (var i = 0; i < pWin; i++){
+      playerScore[i].style.color = "yellow"
+    }
+
+  }else if (player === 1 && computer === 3){
+    loader.className = "hide";
+    scissor2.className = "";
+    header.innerHTML = "Computer Wins";
+    cWin++;
+    console.log("Computer wins = " + cWin);
+    for (var i = 0; i < cWin; i++){
+      computerScore[i].style.color = "yellow"
+    }
   }
+  total = draw + cWin + pWin;
+})
+//Rock event handling
+rock.addEventListener('click', function(){
+  var player =  2;
+  var computer = Math.floor(Math.random() * 3 + 1);
+  paper.className = "hide";
+  scissor.className = "hide";
+  loader.className = "hide";
+
+  if (player === computer){
+    rock2.className = "";
+    header.innerHTML = "Draw";
+    draw++;
+    
+    console.log("draw = " + draw);
+    
+
+  }else if (player == 2 && computer === 1){
+    paper2.className = "";    
+
+    header.innerHTML = "Computer Wins!"
+    cWin++;
+    
+    console.log("Computer wins = " + cWin);
+    for (var i = 0; i < cWin; i++){
+      computerScore[i].style.color = "yellow"
+    }
+
+  }else if (player === 2 && computer === 3){
+    scissor2.className = "";
+    header.innerHTML = "You Win!";
+    pWin++;
+    
+    console.log("player wins = " + pWin);
+    
+    for (var i = 0; i < pWin; i++){
+      playerScore[i].style.color = "yellow"
+    }
+  }
+  total = draw + cWin + pWin;
+  
+ 
+})
+//Scisscor event handling
+scissor.addEventListener('click', function(){
+  var player =  3;
+  var computer = Math.floor(Math.random() * 3 + 1);
+  rock.className = "hide";
+  paper.className = "hide";
+  loader.className = "hide";
+
+  if (player === computer){
+    scissor2.className = "";
+    header.innerHTML = "Draw!"
+    draw++;
+    total+=draw;
+    console.log("draw = " + draw);
+
+  }else if (player == 3 && computer === 2){
+    rock2.className = "";
+
+    header.innerHTML = "Computer Wins!"
+    cWin++;
+    total+=cWin;
+    console.log("Computer wins = " + cWin);
+    for (var i = 0; i < cWin; i++){
+      computerScore[i].style.color = "yellow"
+    }
+
+  }else if (player === 3 && computer === 1){
+    paper2.className = "";
+
+    header.innerHTML = "You Win!";
+    pWin++;
+    total+=pWin;
+    console.log("player wins = " + pWin);
+    for (var i = 0; i < pWin; i++){
+      playerScore[i].style.color = "yellow"
+    }
+  }
+  total = draw + cWin + pWin;
+})
+
+//this is event handler for playing again when play again button is clicked
 
 
-console.log(computerPlay());
+  again.addEventListener('click', function(){
+    if (total < 5){
+      paper.className = "";
+      rock.className = "";
+      scissor.className = "";
+      paper2.className = "hide";
+      rock2.className = "hide";
+      scissor2.className = "hide";
+      loader.className = "";
+      header.innerHTML = "Rock Paper & Scissors";
+     console.log("Total" + total);
+    }else{
+      alert("Game is over");
+    }
+ 
+  })
+
+ 
+
+  
+  
+  
+
+
+
+
+
 
 //Global Variables !!
-let playerOptions = document.querySelector("#options");
-let humanSelection = "";
-let humanRecord = null;
-let computerRecord = null;
-// function: humanPick to handle the user selection via Event listener
-playerOptions.addEventListener("click", humanPick, false);
-function humanPick(e){
-  if(e.target.localName == "img"){
-    let clickedItem = e.target.id;
-    clickedItem = clickedItem.charAt(0).toUpperCase() + clickedItem.slice(1).toLowerCase();
-
-    if(clickedItem == "Paper"){
-      if(playerOptions != null){
-        let rock = document.getElementById('rock');
-        let scissors = document.getElementById('scissors');
-        if(rock){
-        rock.parentNode.removeChild(rock);
-        scissors.parentNode.removeChild(scissors);
-        }
-      }
-      humanSelection = clickedItem;
-    }
-
-    else if(clickedItem == "Rock"){
-      if(playerOptions != null){
-        let paper = document.getElementById('paper');
-        let scissors = document.getElementById('scissors');
-        if(paper){
-        paper.parentNode.removeChild(paper);
-        scissors.parentNode.removeChild(scissors);
-        }
-      }
-      humanSelection = clickedItem;
-    }
-
-    else if(clickedItem == "Scissors"){
-      if(playerOptions != null){
-        let rock = document.getElementById('rock');
-        let paper = document.getElementById('paper');
-        if(paper){
-        paper.parentNode.removeChild(paper);
-        rock.parentNode.removeChild(rock);
-        }
-      }
-      humanSelection = clickedItem;
-    }
-
-  }
-  console.log(humanSelection);
-  function computerOptionsDisplay(){
-    let computerPick = computerPlay();
-
-    if(computerPick != ""){
-      let loader = document.getElementById('loader');
-      loader.parentNode.removeChild(loader);
-
-      let rock2 = document.getElementById('rock2');
-      let paper2 = document.getElementById('paper2');
-      let scissors2 = document.getElementById('scissors2');
-      let header = document.getElementById('header');
-      let empty = document.getElementById('empty');
-      let full = document.getElementById('full');
-      let empty2 = document.getElementById('empty2');
-      let full2 = document.getElementById('full2');
-
-      if(computerPick == "Paper"){
-        paper2.className = "";
-        if(humanSelection == "Paper"){
-          header.innerText = "The Game is: TIE!";
-          empty.className = "hide";
-          full.className = ""
-          empty2.className = "hide";
-          full2.className = ""
-
-
-        }
-        else if (humanSelection == "Rock")
-        {
-          header.innerText = "You Lose! Rock loses to Paper"
-          empty2.className = "hide";
-          full2.className = ""
-        }
-        else if(humanSelection == "Scissors")
-        {
-          header.innerText = "You Win! Scissors beats Paper";
-          empty.className = "hide";
-          full.className = ""
-        }
-      }
-      else if(computerPick == "Scissors"){
-        scissors2.className = "";
-        if(humanSelection == "Paper"){
-          header.innerText = "You Lose! Paper loses to Scissors";
-          empty2.className = "hide";
-          full2.className = ""
-        }
-        else if (humanSelection == "Rock")
-        {
-          header.innerText = "You Win! Rock beats Scissors"
-          empty.className = "hide";
-          full.className = ""
-        }
-        else if(humanSelection == "Scissors")
-        {
-          header.innerText = "The Game is: TIE!";
-          empty.className = "hide";
-          full.className = ""
-          empty2.className = "hide";
-          full2.className = ""
-        }
-      }
-      else if(computerPick == "Rock"){
-        rock2.className = "";
-        if(humanSelection == "Paper"){
-          header.innerText = "You Win! Paper beats Rock";
-          empty.className = "hide";
-          full.className = "";
-        }
-        else if (humanSelection == "Rock")
-        {
-          header.innerText = "The Game is: TIE!";
-          empty.className = "hide";
-          full.className = ""
-          empty2.className = "hide";
-          full2.className = ""
-        }
-        else if(humanSelection == "Scissors")
-        {
-          header.innerText = "You Lose! Scissors loses to Rock";
-          empty2.className = "hide";
-          full2.className = ""
-        }
-      }
-
-      switch (computerPick) {
-        case expression:
-
-          break;
-        default:
-
-      }
-
-    }
-  }
-  computerOptionsDisplay();
-
-}
-//End of the humanPick
-// a button to reset all scores
-const reset = document.querySelector('a.reset');
-reset.addEventListener('click', (e) => {
-		location.reload();
-	});
